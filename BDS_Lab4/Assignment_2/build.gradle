@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'application'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.hadoop:hadoop-common:3.1.3'
+    implementation 'org.apache.hadoop:hadoop-mapreduce-client-core:3.1.3'
+    implementation 'org.apache.hadoop:hadoop-mapreduce-client-common:3.1.3'
+    implementation 'org.apache.hadoop:hadoop-mapreduce-client-jobclient:3.1.3'
+    
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
+}
+
+shadowJar {
+    // fat jar 的基础名称
+    archiveBaseName.set('MyMapReduce')
+    // 不加任何后缀
+    archiveClassifier.set('')
+    // 不带版本号
+    archiveVersion.set('')
+    
+    // 指定 jar 的 Main-Class
+    manifest {
+        attributes('Main-Class': 'MyMapReduce')
+     
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+application {
+  
+    mainClass = 'MyMapReduce'
+}
