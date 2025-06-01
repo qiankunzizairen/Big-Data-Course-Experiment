@@ -1,4 +1,4 @@
-# my-gradle-project
+# Gradle-Project
 
 这是一个使用 Gradle 构建和运行的 Java 项目。无须额外配置，只需将整个项目文件夹解压到本地，Gradle 会根据 `build.gradle` 自动在线下载所需依赖。第一次编译时间可能较长。
 
